@@ -747,41 +747,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<button id= "check_out" class="btn btn-primary" style="margin-left: 600px" align="center" class="button">Try & Checkout</button>
 		</center>
 
-<script type="text/javascript">
-
-	var CART = []
-	
-	function addToCart(product) {
-		if(CART.indexOf(product) == -1){
-			CART.push(product)
-		}
-		   alert("Product added to cart!")
-	}
-	
-	function checkOut(){
-		alert("Checking out....")
-		return CART.join(' ')
-	}
-	
-	function runPyScript(input){
-		alert("Opening dressing room with webcam...")
-		var jqXHR = $.ajax({
-			type: "POST",
-			url: "/tryall",
-			async: false,
-			data: { mydata: input }
-		});
-	
-		return jqXHR.responseText;
-	}
-	
-	$('#check_out').click(function(){
-		alert("Get ready to try!")
-		datatosend = CART.join(' ');
-		result = runPyScript(datatosend);
-	});
-	</script>
-
 </body></center></div>
 			 
 			 
@@ -832,6 +797,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <!-- Template Javascript -->
     <script src="../static/js/main.js"></script>
+    <script src="../static/js/script.js"></script>
 </body>
  
 </html>
