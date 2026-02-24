@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ARShop | WebAR Virtual Try-On</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f4f6f9;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .product-card {
+            border: none;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .try-btn {
+            background: #2a5298;
+            color: white;
+            border-radius: 30px;
+        }
+
+        .try-btn:hover {
+            background: #1e3c72;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- 🔵 HERO SECTION -->
+<section class="hero">
+    <div class="container">
+        <h1 class="display-5 fw-bold">AR-Based Virtual Try-On System</h1>
+        <p class="lead mt-3">See It Before You Own It</p>
+        <button class="btn btn-light mt-3" onclick="startAR()">Start AR Experience</button>
+    </div>
+</section>
+
+<!-- 🛍 PRODUCT SECTION -->
+<div class="container py-5">
+    <h2 class="text-center mb-4">Featured Products</h2>
+
+    <div class="row g-4">
+
+        <!-- Product 1 -->
+        <div class="col-md-4">
+            <div class="card product-card p-3">
+                <img src="../static/images/Sunglasses6/1.png" class="img-fluid">
+                <h5 class="mt-3">AR Sunglasses</h5>
+                <p><del>₹320</del> <strong>₹250</strong></p>
+                <button class="btn try-btn w-100" onclick="tryProduct('Sunglasses6/1.png')">
+                    Try in AR
+                </button>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="col-md-4">
+            <div class="card product-card p-3">
+                <img src="../static/images/Necklace1/1.png" class="img-fluid">
+                <h5 class="mt-3">Pendant Necklace</h5>
+                <p><del>₹320</del> <strong>₹200</strong></p>
+                <button class="btn try-btn w-100" onclick="tryProduct('Necklace1/1.png')">
+                    Try in AR
+                </button>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="col-md-4">
+            <div class="card product-card p-3">
+                <img src="../static/images/Earrings2/1.png" class="img-fluid">
+                <h5 class="mt-3">Stud Earrings</h5>
+                <p><del>₹320</del> <strong>₹100</strong></p>
+                <button class="btn try-btn w-100" onclick="tryProduct('Earrings2/1.png')">
+                    Try in AR
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 🧠 SCRIPT SECTION -->
+<script>
+
+function startAR(){
+    alert("Launching Camera for AR Try-On...");
+    // Later we connect camera + MediaPipe here
+}
+
+function tryProduct(product){
+    alert("Preparing AR Try-On for: " + product);
+
+    fetch("/tryon", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ product: product })
+    })
+    .then(res => res.json())
+    .then(data => console.log(data));
+}
+
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
